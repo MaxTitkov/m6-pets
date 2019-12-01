@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} Список питомцев {% endblock %}
+
+{% block main_content %}
+    <div class="row mt-5">
+       {% for pet in pets %} 
+       <div class="col col-lg-4">
+            
+            <div class="card" style="width: 18rem;">
+                {% if pet.photo %}
+                    <img src="{{pet.photo.url}}" class="card-img-top"  alt="img" width="200">
+                {% endif %}
+                <div class="card-body">
+                {% if pet.kind == "C" %}
+                    <h5 class="card-title">Кот по кличке {{pet.nickname}}</h5>
+                {% else %}
+                    <h5 class="card-title">Пес по кличке {{pet.nickname}}</h5>
+                {% endif %}
+                    <h6 class="card-subtitle mb-2 text-muted">{{pet.city}}</h5>
+                    <p class="card-text">{{pet.description|truncatechars:50}}</p>
+                <a href="{% url 'PetDetail' pet.id%}" class="btn btn-primary">Подробнее...</a>
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+        
+    
+{% endblock %}

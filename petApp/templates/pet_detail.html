@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Информация о животном {% endblock %}
+
+{% block main_content %}
+
+    <div class="row mt-5">
+        <div class="col col-lg-8">
+            <div class="jumbotron">
+                <h1 class="display-4">{{pet.nickname}}</h1>
+                <p>{{pet.city}}</p>
+                <hr class="my-4">
+                <p class="lead">{{pet.description}}</p>
+            </div>
+        </div>
+        <div class="col col-lg-4">
+            {% if pet.photo %}
+                <img src="{{pet.photo.url}}" class="card-img-top"  alt="img" width="200">
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
